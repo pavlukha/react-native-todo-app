@@ -50,10 +50,10 @@ export const boardReducer = (state = initialState, action) => {
     //     boards: deleteBoard,
     //   };
     case ADD_TODO:
-      console.log(action);
-      const newTodo = state.boards.map((board) => {
-        if (board.id === action.id) {
-          board.todos.push({
+      console.log(state);
+      const newTodo = state.boards.map((boardItem) => {
+        if (boardItem.id === action.id) {
+          boardItem.todos.push({
             title: action.title,
             isDone: false,
             id: createPincode(5),
@@ -83,7 +83,6 @@ export const boardReducer = (state = initialState, action) => {
     //     boards: toggledTodo,
     //   };
     // case DELETE_TODO:
-    //   console.log(action);
     //   const deleteTodo = state.boards.map((boards) => {
     //     if (boards.id === action.boardId) {
     //       boards.todos = boards.todos.filter((todos, id) => {

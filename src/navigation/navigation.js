@@ -5,55 +5,26 @@ import HeaderTitle from '../components/Header';
 import HomeScreen from '../screens/homeScreen';
 import TaskScreen from '../screens/taskScreen';
 import TodoScreen from '../screens/todoScreen';
+import WelcomeScreen from '../screens/welcomeScreen';
+import ProfileScreen from '../screens/profileScreen';
 
 const Stack = createStackNavigator();
 
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: 'Boards',
-            headerStyle: {
-              backgroundColor: '#1F2E35',
-            },
-            headerTintColor: '#e7f5dc',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
-        />
+      <Stack.Navigator headerMode="none" initialRouteName="Home">
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="Tasks"
           component={TaskScreen}
           options={({route}) => ({
             headerTitle: (props) => <HeaderTitle {...props} {...route} />,
-            headerStyle: {
-              backgroundColor: '#1F2E35',
-            },
-            headerTintColor: '#e7f5dc',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
           })}
         />
-        <Stack.Screen
-          name="Todo"
-          component={TodoScreen}
-          options={{
-            title: '${todo.title}',
-            headerStyle: {
-              backgroundColor: '#1F2E35',
-            },
-            headerTintColor: '#e7f5dc',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
-        />
+        <Stack.Screen name="Todo" component={TodoScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

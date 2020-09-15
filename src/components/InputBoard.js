@@ -1,16 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
+  Alert,
   View,
   TextInput,
   StyleSheet,
   Keyboard,
-  Alert,
   TouchableHighlight,
-  Modal,
 } from 'react-native';
+import Modal from 'react-native-modal';
 import {addBoard} from '../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {
+  modalBtns,
+  modalOpenBtn,
+  centeredView,
+  modalView,
+} from '../styles/styles';
 
 class InputBoards extends React.Component {
   constructor(props) {
@@ -36,17 +43,21 @@ class InputBoards extends React.Component {
 
   render() {
     return (
-      <View style={styles.centeredView}>
+      <View style={centeredView}>
         <Modal
           animationType="slide"
           transparent={true}
-          visible={this.state.modalVisible}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+          visible={this.state.modalVisible}
+          onBackdropPress={() =>
+            this.setState({modalVisible: !this.state.modalVisible})
+          }
+          backgroundColor="rgba(0,0,0,0.7)">
+          <View style={centeredView}>
+            <View style={modalView}>
               <TextInput
                 autoFocus
                 style={styles.textInput}
-                placeholder="Type here your board's name"
+                placeholder="Type your board's name"
                 onChangeText={(e) => {
                   this.setState({input: e});
                 }}
@@ -54,7 +65,7 @@ class InputBoards extends React.Component {
               />
               <View style={styles.buttonBlock}>
                 <TouchableHighlight
-                  style={styles.openButton}
+                  style={modalBtns}
                   onPress={() => {
                     this.submitBoard();
                     this.setState({modalVisible: !this.state.modalVisible});
@@ -62,7 +73,7 @@ class InputBoards extends React.Component {
                   <Icon name={'check'} color="#fff" size={20} />
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.openButton}
+                  style={modalBtns}
                   onPress={() => {
                     this.setState({modalVisible: !this.state.modalVisible});
                   }}>
@@ -73,11 +84,10 @@ class InputBoards extends React.Component {
           </View>
         </Modal>
         <TouchableHighlight
-          style={styles.openButton}
           onPress={() => {
             this.setState({modalVisible: true});
           }}>
-          <Icon name={'plus'} color="#fff" size={20} />
+          <AntDesign name={'plus'} color="#fff" style={modalOpenBtn} />
         </TouchableHighlight>
       </View>
     );
@@ -85,39 +95,11 @@ class InputBoards extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 0,
-    alignSelf: 'flex-end',
-    marginTop: 5,
-  },
   buttonBlock: {
+    alignItems: 'center',
     flexDirection: 'row',
-    alignItems: 'center',
   },
-  openButton: {
-    backgroundColor: '#64ac8f',
-    borderRadius: 5,
-    marginLeft: 15,
-    marginRight: 5,
-    width: 39,
-    padding: 10,
-    elevation: 2,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: '#c0dfc2',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
+
   textInput: {
     margin: 20,
     borderRadius: 20,

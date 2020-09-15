@@ -1,16 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
+  Alert,
   View,
   TextInput,
   StyleSheet,
   Keyboard,
-  Alert,
   TouchableHighlight,
-  Modal,
 } from 'react-native';
-import {addBoard} from '../store/board/actions';
+import Modal from 'react-native-modal';
+import {addTodo} from '../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {colors} from '../styles/styles';
 
 class InputTodos extends React.Component {
   constructor(props) {
@@ -24,13 +25,15 @@ class InputTodos extends React.Component {
 
   submitTodo = () => {
     if (this.state.input !== '') {
-      this.props.addTodo(this.state.input);
+      console.log(props);
+
+      this.props.addTodo(this.state.input, this.props.boardId);
       this.setState({
         input: '',
       });
       Keyboard.dismiss();
     } else {
-      Alert.alert('Sorry... Empty Todo');
+      Alert.alert('Sorry... Empty Title');
     }
   };
 
@@ -40,7 +43,11 @@ class InputTodos extends React.Component {
         <Modal
           animationType="slide"
           transparent={true}
-          visible={this.state.modalVisible}>
+          visible={this.state.modalVisible}
+          onBackdropPress={() =>
+            this.setState({modalVisible: !this.state.modalVisible})
+          }
+          backgroundColor="rgba(0,0,0,0.7)">
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <TextInput
@@ -56,7 +63,7 @@ class InputTodos extends React.Component {
                 <TouchableHighlight
                   style={styles.openButton}
                   onPress={() => {
-                    this.submitBoard();
+                    this.submitTodo();
                     this.setState({modalVisible: !this.state.modalVisible});
                   }}>
                   <Icon name={'check'} color="#fff" size={20} />
@@ -135,8 +142,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addBoard: (title) => dispatch(addBoard(title)),
+const mapStateToProps = ({boards}) => ({
+  boards: boards.boardItem,
 });
 
-export default connect(null, mapDispatchToProps)(InputTodos);
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (title) => dispatch(addTodo(title)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputTodos);

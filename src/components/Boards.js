@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {addBoard} from '../store/board/actions';
+import {colors} from '../styles/styles';
 
 class Boards extends React.Component {
   render() {
@@ -16,7 +18,10 @@ class Boards extends React.Component {
               boardTitle: boardItem.title,
             });
           }}>
-          <Text style={styles.text}>{boardItem.title}</Text>
+          <View style={{flexDirection: 'row'}}>
+            <Icon name={'th-list'} color="#fff" size={20} style={styles.icon} />
+            <Text style={styles.text}>{boardItem.title}</Text>
+          </View>
         </TouchableOpacity>
       );
     });
@@ -28,8 +33,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#30444E',
+    justifyContent: 'flex-start',
+    backgroundColor: '#64ac8f',
     flexDirection: 'row',
     borderRadius: 20,
     borderWidth: 2,
@@ -45,8 +50,11 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   text: {
-    color: '#c0dfc2',
+    color: '#000',
     fontSize: 20,
+  },
+  icon: {
+    marginRight: 20,
   },
 });
 

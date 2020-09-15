@@ -13,7 +13,7 @@ const mapStateToProps = ({boards}) => ({
 
 const styles = StyleSheet.create({
   headerTitle: {
-    color: '#e7f5dc',
+    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
   },
