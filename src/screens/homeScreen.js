@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, ScrollView, Text} from 'react-native';
 import InputBoards from '../components/InputBoard';
-// import Boards from '../components/Boards';
+import Boards from '../components/Boards';
 import {
   mainContainer,
   board,
@@ -14,31 +14,17 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-function HomeScreen({navigation, props}) {
+function HomeScreen({navigation}) {
   return (
     <View style={mainContainer}>
       <View style={{flexDirection: 'row'}}>
         <Text style={[text.textTitle, {marginRight: '65%'}]}>Доски</Text>
         <InputBoards />
       </View>
-      <View style={board.container}>
-        <View style={board.item}>
-          <Text style={text.textBoardTitle}>Дом</Text>
-          <Icon name={'home'} size={27} color={colors.strongCyan} />
-        </View>
-        <View style={board.item}>
-          <Text style={text.textBoardTitle}>Работа</Text>
-          <Icon name={'clipboard-list'} size={27} color={colors.strongCyan} />
-        </View>
-        <View style={board.item}>
-          <Text style={text.textBoardTitle}>Шоппинг</Text>
-          <Icon name={'shopping-cart'} size={27} color={colors.strongCyan} />
-        </View>
-        <View style={board.item}>
-          <Text style={text.textBoardTitle}>Спорт</Text>
-          <Icon name={'basketball-ball'} size={27} color={colors.strongCyan} />
-        </View>
-      </View>
+
+      <ScrollView contentContainerStyle={board.container}>
+        <Boards navigation={navigation} />
+      </ScrollView>
 
       <View style={footer}>
         <View style={innerFooter}>
@@ -50,17 +36,13 @@ function HomeScreen({navigation, props}) {
           />
           <Text style={text.textFooter}>Доски</Text>
         </View>
-        <Icon name={'clipboard-check'} size={27} color={'#fff'} />
+        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+          <Icon name={'id-card'} size={27} color={'#fff'} />
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Icon name={'user-circle'} size={27} color={'#fff'} />
         </TouchableOpacity>
       </View>
-
-      {/* <ScrollView><Boards navigation={props.navigation} /></ScrollView> */}
-      {/* <Button
-        title="To Welcome"
-        onPress={() => navigation.navigate('Welcome')}
-      /> */}
     </View>
   );
 }

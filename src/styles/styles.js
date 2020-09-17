@@ -1,10 +1,11 @@
 import {Dimensions} from 'react-native';
 
 const width = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export const mainContainer = {
   flex: 1,
-  padding: 16,
+  padding: 20,
   backgroundColor: '#0d0d0d',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -19,7 +20,7 @@ export const colors = {
 export const text = {
   textTitle: {
     color: '#fff',
-    fontSize: 36,
+    fontSize: 30,
     fontWeight: 'bold',
     fontStyle: 'normal',
   },
@@ -28,6 +29,9 @@ export const text = {
     fontSize: 20,
     fontStyle: 'normal',
     fontWeight: 'bold',
+    alignSelf: 'flex-end',
+    marginBottom: 16,
+    marginLeft: 5,
   },
   textTodoTitle: {
     color: '#fff',
@@ -40,6 +44,13 @@ export const text = {
     fontSize: 16,
     fontStyle: 'normal',
     fontWeight: 'normal',
+  },
+  textTodos: {
+    color: '#fff',
+    fontSize: 16,
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    marginLeft: 18,
   },
 };
 
@@ -100,7 +111,7 @@ export const loginButtonAccountText = {
 export const modalOpenBtn = {
   backgroundColor: colors.strongCyan,
   height: 37,
-  weight: 34,
+  width: 34,
   borderRadius: 3,
   fontSize: 34,
 };
@@ -138,14 +149,35 @@ export const modalBtns = {
   elevation: 2,
 };
 
+export const buttonBlock = {
+  flexDirection: 'row',
+  alignItems: 'center',
+};
+
+export const modalTextInput = {
+  margin: 20,
+  borderRadius: 20,
+  padding: 35,
+  alignItems: 'center',
+  backgroundColor: '#e7f5dc',
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  elevation: 5,
+};
+
 /* Контейнер с досками */
 export const board = {
   container: {
-    flex: 2,
     marginTop: 32,
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    flexGrow: 1,
   },
   item: {
     justifyContent: 'space-around',
@@ -154,8 +186,29 @@ export const board = {
     backgroundColor: colors.veryDarkGrey,
     borderRadius: 16,
     height: 140,
-    width: 150,
+    width: 160,
     margin: 7,
+  },
+};
+
+/* Контейнер с тудушками */
+export const todoStyle = {
+  container: {
+    height: 72,
+    width: 343,
+    backgroundColor: colors.veryDarkGrey,
+    borderRadius: 16,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: 8,
+  },
+  checkBox: {
+    height: 40,
+    width: 60,
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    marginLeft: 10,
   },
 };
 

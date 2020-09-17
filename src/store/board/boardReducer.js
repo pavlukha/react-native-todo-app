@@ -9,7 +9,32 @@ import {
 import {createPincode} from '../../utils/pinCode';
 
 const initialState = {
-  boardItem: [],
+  boardItem: [
+    {
+      id: 1,
+      title: 'Дом',
+      icon: 'home',
+      todos: [],
+    },
+    {
+      id: 2,
+      title: 'Работа',
+      icon: 'clipboard-list',
+      todos: [],
+    },
+    {
+      id: 3,
+      title: 'Шоппинг',
+      icon: 'shopping-cart',
+      todos: [],
+    },
+    {
+      id: 4,
+      title: 'Спорт',
+      icon: 'basketball-ball',
+      todos: [],
+    },
+  ],
 };
 
 export const boardReducer = (state = initialState, action) => {
@@ -18,6 +43,7 @@ export const boardReducer = (state = initialState, action) => {
       const newBoard = state.boardItem.concat({
         title: action.title,
         id: createPincode(5),
+        icon: 'list-alt',
         todos: [],
       });
       return {
@@ -50,8 +76,7 @@ export const boardReducer = (state = initialState, action) => {
     //     boards: deleteBoard,
     //   };
     case ADD_TODO:
-      console.log(state);
-      const newTodo = state.boards.map((boardItem) => {
+      const newTodo = state.boardItem.map((boardItem) => {
         if (boardItem.id === action.id) {
           boardItem.todos.push({
             title: action.title,
@@ -59,29 +84,28 @@ export const boardReducer = (state = initialState, action) => {
             id: createPincode(5),
           });
         }
-        return board;
+        return boardItem;
       });
-      console.log(newTodo);
       return {
         ...state,
-        boards: newTodo,
+        boardItem: newTodo,
       };
-    // case TOGGLE_TODO:
-    //   const toggledTodo = state.boards.map((board, i) => {
-    //     if (board.id === action.boardId) {
-    //       board.todos.map((todo) => {
-    //         if (todo.id === action.todoId) {
-    //           todo.isDone = !todo.isDone;
-    //         }
-    //         return todo;
-    //       });
-    //     }
-    //     return board;
-    //   });
-    //   return {
-    //     ...state,
-    //     boards: toggledTodo,
-    //   };
+    case TOGGLE_TODO:
+      const toggledTodo = state.boardItem.map((boardItem, i) => {
+        if (boardItem.id === action.boardId) {
+          boardItem.todos.map((todo) => {
+            if (todo.id === action.todoId) {
+              todo.isDone = !todo.isDone;
+            }
+            return todo;
+          });
+        }
+        return boardItem;
+      });
+      return {
+        ...state,
+        boardItem: toggledTodo,
+      };
     // case DELETE_TODO:
     //   const deleteTodo = state.boards.map((boards) => {
     //     if (boards.id === action.boardId) {

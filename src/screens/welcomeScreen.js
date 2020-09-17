@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableOpacity, Button, Text, TextInput} from 'react-native';
+import {View, TouchableOpacity, Text, TextInput} from 'react-native';
 import {
   mainContainer,
   text,
@@ -35,14 +35,15 @@ function WelcomeScreen({navigation}) {
         </Text>
       </View>
       <View>
-        <TouchableOpacity style={loginButtonSignIn}>
+        <TouchableOpacity
+          style={loginButtonSignIn}
+          onPress={() => navigation.navigate('Home')}>
           <Text style={loginButtonSignInText}>Войти</Text>
         </TouchableOpacity>
         <TouchableOpacity style={loginButtonAccount}>
           <Text style={loginButtonAccountText}>Создать аккаунт</Text>
         </TouchableOpacity>
       </View>
-      {/* <Button title="To Boards" onPress={() => navigation.navigate('Home')} /> */}
     </View>
   );
 }

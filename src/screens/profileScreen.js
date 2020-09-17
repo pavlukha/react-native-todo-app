@@ -33,7 +33,9 @@ function ProfileScreen({navigation}) {
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <AntDesign name={'appstore-o'} size={27} color={'#fff'} />
         </TouchableOpacity>
-        <Icon name={'clipboard-check'} size={27} color={'#fff'} />
+        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+          <Icon name={'id-card'} size={27} color={'#fff'} />
+        </TouchableOpacity>
       </View>
     </View>
   );

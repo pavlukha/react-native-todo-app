@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {colors} from '../styles/styles';
 import {ActionSheet, Root} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -34,7 +33,6 @@ export default class CameraImage extends React.Component {
       cropping: true,
     }).then((image) => {
       this.onSelectedImage(image);
-      console.log(image);
     });
   };
 
@@ -45,7 +43,6 @@ export default class CameraImage extends React.Component {
       cropping: true,
     }).then((image) => {
       this.onSelectedImage(image);
-      console.log(image);
     });
   };
 

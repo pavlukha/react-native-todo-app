@@ -1,13 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-  Alert,
-  View,
-  TextInput,
-  StyleSheet,
-  Keyboard,
-  TouchableHighlight,
-} from 'react-native';
+import {Alert, View, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import {addBoard} from '../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -17,6 +10,8 @@ import {
   modalOpenBtn,
   centeredView,
   modalView,
+  buttonBlock,
+  modalTextInput,
 } from '../styles/styles';
 
 class InputBoards extends React.Component {
@@ -37,7 +32,7 @@ class InputBoards extends React.Component {
       });
       Keyboard.dismiss();
     } else {
-      Alert.alert('Sorry... Empty Title');
+      Alert.alert('Необходимо ввести текст');
     }
   };
 
@@ -56,66 +51,43 @@ class InputBoards extends React.Component {
             <View style={modalView}>
               <TextInput
                 autoFocus
-                style={styles.textInput}
-                placeholder="Type your board's name"
+                style={modalTextInput}
+                placeholder="Введите название доски"
                 onChangeText={(e) => {
                   this.setState({input: e});
                 }}
                 value={this.state.input}
               />
-              <View style={styles.buttonBlock}>
-                <TouchableHighlight
+              <View style={buttonBlock}>
+                <TouchableOpacity
                   style={modalBtns}
                   onPress={() => {
                     this.submitBoard();
                     this.setState({modalVisible: !this.state.modalVisible});
                   }}>
                   <Icon name={'check'} color="#fff" size={20} />
-                </TouchableHighlight>
-                <TouchableHighlight
+                </TouchableOpacity>
+                <TouchableOpacity
                   style={modalBtns}
                   onPress={() => {
                     this.setState({modalVisible: !this.state.modalVisible});
                   }}>
                   <Icon name={'times'} color="#fff" size={20} />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
         </Modal>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={() => {
             this.setState({modalVisible: true});
           }}>
           <AntDesign name={'plus'} color="#fff" style={modalOpenBtn} />
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonBlock: {
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-
-  textInput: {
-    margin: 20,
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    backgroundColor: '#e7f5dc',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-});
 
 const mapDispatchToProps = (dispatch) => ({
   addBoard: (title) => dispatch(addBoard(title)),

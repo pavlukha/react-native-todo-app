@@ -23,7 +23,7 @@ export const deleteBoard = (id) => ({
   id,
 });
 
-export const addTodo = (title) => ({
+export const addTodo = (title, id) => ({
   type: ADD_TODO,
   title,
   id,
