@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Alert, View, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import {addBoard} from '../store/board/actions';
+import {addBoard} from '../../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
@@ -12,7 +12,7 @@ import {
   modalView,
   buttonBlock,
   modalTextInput,
-} from '../styles/styles';
+} from '../../styles/styles';
 
 class InputBoards extends React.Component {
   constructor(props) {
@@ -51,6 +51,7 @@ class InputBoards extends React.Component {
             <View style={modalView}>
               <TextInput
                 autoFocus
+                autoCapitalize="sentences"
                 style={modalTextInput}
                 placeholder="Введите название доски"
                 onChangeText={(e) => {

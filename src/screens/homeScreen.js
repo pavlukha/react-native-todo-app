@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, ScrollView, Text} from 'react-native';
-import InputBoards from '../components/InputBoard';
+import InputBoards from '../components/Input/InputBoard';
 import Boards from '../components/Boards';
 import {
   mainContainer,

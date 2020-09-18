@@ -173,7 +173,7 @@ export const modalTextInput = {
 /* Контейнер с досками */
 export const board = {
   container: {
-    marginTop: 32,
+    marginTop: 28,
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -187,7 +187,7 @@ export const board = {
     borderRadius: 16,
     height: 140,
     width: 160,
-    margin: 7,
+    margin: 8,
   },
 };
 

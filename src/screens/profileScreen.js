@@ -11,7 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import CameraImage from '../components/Camera';
+import CameraImage from '../components/Camera/Camera';
 
 function ProfileScreen({navigation}) {
   return (

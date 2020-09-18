@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Alert, View, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import {addTodo} from '../store/board/actions';
+import {addTodo} from '../../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
@@ -12,7 +12,7 @@ import {
   modalView,
   modalTextInput,
   modalBtns,
-} from '../styles/styles';
+} from '../../styles/styles';
 
 class InputTodos extends React.Component {
   constructor(props) {
@@ -52,6 +52,7 @@ class InputTodos extends React.Component {
             <View style={modalView}>
               <TextInput
                 autoFocus
+                autoCapitalize="sentences"
                 style={modalTextInput}
                 placeholder="Введите название задания"
                 onChangeText={(e) => {
