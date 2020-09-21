@@ -25,7 +25,6 @@ class InputTodos extends React.Component {
   }
 
   submitTodo = () => {
-    console.log('id: ', this.props.boardId);
     if (this.state.input !== '') {
       this.props.addTodo(this.state.input, this.props.boardId);
       this.setState({

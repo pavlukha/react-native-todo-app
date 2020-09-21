@@ -5,7 +5,6 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {connect} from 'react-redux';
-import {SwipeListView} from 'react-native-swipe-list-view';
 import InputTodo from '../components/Input/InputTodo';
 import {
   colors,
@@ -15,34 +14,11 @@ import {
   innerFooter,
   todoStyle,
 } from '../styles/styles';
-import {toggleTodo} from '../store/board/actions';
+import {toggleTodo, deleteTodo} from '../store/board/actions';
 
-function BoardScreen({route, navigation, boards, toggleTodo}) {
+function BoardScreen({route, navigation, boards, toggleTodo, deleteTodo}) {
   const {boardId, boardTitle} = route.params;
   const arr = boards.filter((el) => el.id === boardId);
-
-  const renderItem = (data) => {
-    console.log(data);
-    return (
-      <TouchableOpacity>
-        <View style={todoStyle.container}>
-          <CheckBox
-            checkedIcon="check"
-            uncheckedIcon="square-o"
-            size={35}
-            checkedColor={colors.strongCyan}
-            checked={todoIsDone}
-            onPress={() => toggleTodo(boardId, todoId)}
-          />
-          <Text style={text.textTodos}>{todoTitle}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
-  const renderHiddenItem = () => {
-    return <View />;
-  };
 
   return (
     <View style={mainContainer}>
@@ -53,16 +29,27 @@ function BoardScreen({route, navigation, boards, toggleTodo}) {
 
       <ScrollView contentContainerStyle={{marginTop: 10}}>
         {arr[0].todos.map((todo) => (
-          <SwipeListView
-            // data={listData}
-            renderItem={renderItem}
-            renderHiddenItem={renderHiddenItem}
-            rightOpenValue={-150}
-            previewRowKey={'0'}
-            previewOpenValue={-40}
-            previewOpenDelay={3000}
-            style={{backgroundColor: 'pink'}}
-          />
+          <View style={todoStyle.container}>
+            <Icon
+              name={'ban'}
+              size={27}
+              color={colors.strongCyan}
+              style={{marginHorizontal: 10}}
+              onPress={() => {
+                console.log('boardId', boardId, todo.id);
+                deleteTodo(boardId, todo.id);
+              }}
+            />
+            <CheckBox
+              checkedIcon="check"
+              uncheckedIcon="square-o"
+              size={35}
+              checkedColor={colors.strongCyan}
+              checked={todo.isDone}
+              onPress={() => toggleTodo(boardId, todo.id)}
+            />
+            <Text style={text.textTodos}>{todo.title}</Text>
+          </View>
         ))}
       </ScrollView>
 
@@ -89,6 +76,7 @@ function BoardScreen({route, navigation, boards, toggleTodo}) {
 
 const mapDispatchToProps = (dispatch) => ({
   toggleTodo: (boardId, todoId) => dispatch(toggleTodo(boardId, todoId)),
+  deleteTodo: (boardId, todoId) => dispatch(deleteTodo(boardId, todoId)),
 });
 
 const mapStateToProps = ({boards}) => ({

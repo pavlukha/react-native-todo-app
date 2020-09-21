@@ -35,7 +35,7 @@ export const toggleTodo = (boardId, todoId) => ({
   todoId,
 });
 
-export const deleteTodo = (id) => ({
+export const deleteTodo = (boardId, todoId) => ({
   type: DELETE_TODO,
   boardId,
   todoId,
