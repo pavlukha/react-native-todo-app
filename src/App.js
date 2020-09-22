@@ -2,8 +2,9 @@ import * as React from 'react';
 import Navigation from './navigation/navigation';
 import {Provider} from 'react-redux';
 import {store} from '../src/store/reducers';
+import {LogBox} from 'react-native';
 
-console.disableYellowBox = true;
+LogBox.ignoreAllLogs(true);
 
 function App() {
   return (

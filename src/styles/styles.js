@@ -1,7 +1,8 @@
 import {Dimensions} from 'react-native';
 
-const width = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+export const width = Dimensions.get('window').width;
+
+export const heightScreen = Dimensions.get('window').height;
 
 export const mainContainer = {
   flex: 1,
@@ -14,6 +15,7 @@ export const mainContainer = {
 export const colors = {
   strongCyan: '#00CC9B',
   veryDarkGrey: '#242424',
+  silver: '#C4C4C4',
 };
 
 /* Текст в заголовках страниц + текст в boards и todo */
@@ -51,6 +53,12 @@ export const text = {
     fontStyle: 'normal',
     fontWeight: 'normal',
     marginLeft: 18,
+  },
+  textPolicy: {
+    color: '#fff',
+    fontSize: 11,
+    fontStyle: 'normal',
+    fontWeight: 'normal',
   },
 };
 

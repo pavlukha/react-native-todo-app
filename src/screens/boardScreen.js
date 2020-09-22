@@ -64,10 +64,10 @@ function BoardScreen({route, navigation, boards, toggleTodo, deleteTodo}) {
           <Text style={text.textFooter}>Список дел</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <AntDesign name={'appstore-o'} size={27} color={'#fff'} />
+          <AntDesign name={'appstore-o'} size={27} color={colors.silver} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <Icon name={'user-circle'} size={27} color={'#fff'} />
+          <Icon name={'user-circle'} size={27} color={colors.silver} />
         </TouchableOpacity>
       </View>
     </View>

@@ -1,10 +1,7 @@
 import React from 'react';
-import {View, ScrollView, Text} from 'react-native';
-import InputBoards from '../components/Input/InputBoard';
-import Boards from '../components/Boards';
+import {View, Text} from 'react-native';
 import {
   mainContainer,
-  board,
   text,
   colors,
   footer,
@@ -14,30 +11,32 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-function HomeScreen({navigation}) {
+function SettingScreen({navigation}) {
   return (
     <View style={mainContainer}>
       <View style={{flexDirection: 'row'}}>
-        <Text style={[text.textTitle, {marginRight: '65%'}]}>Доски</Text>
-        <InputBoards />
+        <Text style={text.textTitle}>Настройки</Text>
       </View>
 
-      <ScrollView contentContainerStyle={board.container}>
-        <Boards navigation={navigation} />
-      </ScrollView>
+      <Icon
+        name={'tools'}
+        size={75}
+        color={colors.silver}
+        style={{marginHorizontal: 20}}
+      />
 
       <View style={footer}>
         <View style={innerFooter}>
-          <AntDesign
-            name={'appstore-o'}
+          <Icon
+            name={'cog'}
             size={27}
             color={colors.strongCyan}
             style={{marginHorizontal: 20}}
           />
-          <Text style={text.textFooter}>Доски</Text>
+          <Text style={text.textFooter}>Настройки</Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('Onboarding')}>
-          <Icon name={'id-card'} size={27} color={colors.silver} />
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <AntDesign name={'appstore-o'} size={27} color={colors.silver} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Icon name={'user-circle'} size={27} color={colors.silver} />
@@ -47,4 +46,4 @@ function HomeScreen({navigation}) {
   );
 }
 
-export default HomeScreen;
+export default SettingScreen;

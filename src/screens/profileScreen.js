@@ -7,6 +7,7 @@ import {
   footer,
   colors,
   profileImage,
+  todoStyle,
 } from '../styles/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -20,6 +21,18 @@ function ProfileScreen({navigation}) {
         <CameraImage />
       </View>
 
+      <TouchableOpacity
+        style={[todoStyle.container, {justifyContent: 'space-between'}]}
+        onPress={() => navigation.navigate('Settings')}>
+        <Text style={[text.textTodoTitle, {marginLeft: 20}]}>Настройки</Text>
+        <Icon
+          name={'cog'}
+          size={27}
+          color={colors.strongCyan}
+          style={{marginHorizontal: 20}}
+        />
+      </TouchableOpacity>
+
       <View style={footer}>
         <View style={innerFooter}>
           <Icon
@@ -31,10 +44,10 @@ function ProfileScreen({navigation}) {
           <Text style={text.textFooter}>Профиль</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <AntDesign name={'appstore-o'} size={27} color={'#fff'} />
+          <AntDesign name={'appstore-o'} size={27} color={colors.silver} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-          <Icon name={'id-card'} size={27} color={'#fff'} />
+        <TouchableOpacity onPress={() => navigation.navigate('Onboarding')}>
+          <Icon name={'id-card'} size={27} color={colors.silver} />
         </TouchableOpacity>
       </View>
     </View>
