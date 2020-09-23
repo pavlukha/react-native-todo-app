@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ActionSheet, Root} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import ImagePicker from 'react-native-image-crop-picker';
+import ImagePicker from 'react-native';
 import {itemViewImage, imageItem} from '../../styles/styles';
 
 export default class CameraImage extends React.Component {

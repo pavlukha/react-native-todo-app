@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {addBoard} from '../store/board/actions';
+import {addBoard, deleteBoard} from '../store/board/actions';
 import {colors, board, text} from '../styles/styles';
 
 class Boards extends React.Component {
@@ -17,6 +17,7 @@ class Boards extends React.Component {
               boardTitle: boardItem.title,
             });
           }}
+          onLongPress={() => this.props.deleteBoard(boardItem.id)}
           style={board.item}>
           <Text style={text.textBoardTitle}>{boardItem.title}</Text>
           <Icon
@@ -37,6 +38,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addBoard: (title) => dispatch(addBoard(title)),
+  deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Boards);

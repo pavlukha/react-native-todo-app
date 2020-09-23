@@ -75,9 +75,11 @@ export const PageThree = (props) => {
           placeholder="Введите пароль"
           style={textInput.innerText}
         />
-        <Text style={{color: '#fff', alignSelf: 'flex-end', marginTop: 8}}>
-          Забыли пароль?
-        </Text>
+        <TouchableOpacity onPress={props.setStepForgot}>
+          <Text style={{color: '#fff', alignSelf: 'flex-end', marginTop: 8}}>
+            Забыли пароль?
+          </Text>
+        </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity
@@ -139,6 +141,80 @@ export const PageFive = (props) => {
             props.navigation.navigate('Home');
           }}>
           <Text style={loginButtonSignInText}>Регистрация</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export const PageSix = (props) => {
+  return (
+    <View style={mainContainer}>
+      <View style={{alignSelf: 'flex-start'}}>
+        <Text style={text.textTitle}>Забыли пароль?</Text>
+      </View>
+      <Text style={{color: '#fff', alignSelf: 'flex-end', marginTop: 8}}>
+        Чтобы задать новый пароль, введите email-адрес своего аккаунта
+      </Text>
+      <View>
+        <Text style={textInput.outterText}>Ваш электронный адрес:</Text>
+        <TextInput
+          placeholder="Введите электронный адрес"
+          placeholderTextColor="#fff"
+          style={textInput.innerText}
+        />
+      </View>
+      <View>
+        <TouchableOpacity style={loginButtonSignIn} onPress={props.setStep}>
+          <Text style={loginButtonSignInText}>Далее</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={loginButtonAccount}
+          onPress={props.setStepSignIn}>
+          <Text style={loginButtonAccountText}>Войти в систему</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export const PageSeven = (props) => {
+  return (
+    <View style={mainContainer}>
+      <View style={{alignSelf: 'flex-start'}}>
+        <Text style={text.textTitle}>Сброс пароля</Text>
+      </View>
+      <Text style={{color: '#fff', alignSelf: 'flex-end', marginTop: 8}}>
+        Пожалуйста, введите новый пароль
+      </Text>
+      <View>
+        <Text style={textInput.outterText}>Новый пароль</Text>
+        <TextInput
+          placeholder="Напиши минимум 8 символов"
+          placeholderTextColor="#fff"
+          style={textInput.innerText}
+        />
+        <Text style={textInput.outterText}>Повторите новый пароль</Text>
+        <TextInput
+          secureTextEntry
+          placeholderTextColor="#fff"
+          placeholder="Напиши минимум 8 символов"
+          style={textInput.innerText}
+        />
+      </View>
+      <View>
+        <TouchableOpacity
+          style={loginButtonSignIn}
+          onPress={() => {
+            props.setStep;
+            props.navigation.navigate('Home');
+          }}>
+          <Text style={loginButtonSignInText}>Сбросить пароль</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={loginButtonAccount}
+          onPress={props.setStepSignIn}>
+          <Text style={loginButtonAccountText}>Войти в систему</Text>
         </TouchableOpacity>
       </View>
     </View>

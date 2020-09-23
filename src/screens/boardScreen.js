@@ -36,7 +36,6 @@ function BoardScreen({route, navigation, boards, toggleTodo, deleteTodo}) {
               color={colors.strongCyan}
               style={{marginHorizontal: 10}}
               onPress={() => {
-                console.log('boardId', boardId, todo.id);
                 deleteTodo(boardId, todo.id);
               }}
             />

@@ -7,6 +7,8 @@ import {
   PageThree,
   PageFour,
   PageFive,
+  PageSix,
+  PageSeven,
 } from './OnboardingFunc/onboarding';
 
 class OnboardingScreen extends React.Component {
@@ -27,6 +29,7 @@ class OnboardingScreen extends React.Component {
         return (
           <PageThree
             setStep={() => this.setState({page: 4})}
+            setStepForgot={() => this.setState({page: 6})}
             navigation={this.props.navigation}
           />
         );
@@ -36,6 +39,22 @@ class OnboardingScreen extends React.Component {
         return (
           <PageFive
             setStep={() => this.setState({page: 1})}
+            navigation={this.props.navigation}
+          />
+        );
+      case 6:
+        return (
+          <PageSix
+            setStep={() => this.setState({page: 7})}
+            navigation={this.props.navigation}
+            setStepSignIn={() => this.setState({page: 3})}
+          />
+        );
+      case 7:
+        return (
+          <PageSeven
+            setStep={() => this.setState({page: 1})}
+            setStepSignIn={() => this.setState({page: 3})}
             navigation={this.props.navigation}
           />
         );

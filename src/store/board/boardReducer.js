@@ -67,14 +67,14 @@ export const boardReducer = (state = initialState, action) => {
     //     ...state,
     //     boards: toggledBoard,
     //   };
-    // case DELETE_BOARD:
-    //   const deleteBoard = state.boards.filter((board, id) => {
-    //     return board.id !== action.id;
-    //   });
-    //   return {
-    //     ...state,
-    //     boards: deleteBoard,
-    //   };
+    case DELETE_BOARD:
+      const deleteBoard = state.boardItem.filter((boardItem, id) => {
+        return boardItem.id !== action.id;
+      });
+      return {
+        ...state,
+        boardItem: deleteBoard,
+      };
     case ADD_TODO:
       const newTodo = state.boardItem.map((boardItem) => {
         if (boardItem.id === action.id) {
