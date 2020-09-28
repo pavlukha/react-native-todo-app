@@ -110,7 +110,6 @@ export const boardReducer = (state = initialState, action) => {
       const deleteTodo = state.boardItem.map((boardItem, i) => {
         console.log(action.boardId);
         if (boardItem.id === action.boardId) {
-          console.log('wtf');
           boardItem.todos = boardItem.todos.filter((todo, id) => {
             return todo.id !== action.todoId;
           });
