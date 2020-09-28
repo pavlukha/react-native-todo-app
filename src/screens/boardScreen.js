@@ -14,11 +14,12 @@ import {
   innerFooter,
   todoStyle,
 } from '../styles/styles';
-import {toggleTodo} from '../store/board/actions';
+import {toggleTodo, deleteTodo} from '../store/board/actions';
 
-function BoardScreen({route, navigation, boards, toggleTodo}) {
+function BoardScreen({route, navigation, boards, toggleTodo, deleteTodo}) {
   const {boardId, boardTitle} = route.params;
   const arr = boards.filter((el) => el.id === boardId);
+
   return (
     <View style={mainContainer}>
       <View style={{flexDirection: 'row'}}>
@@ -29,6 +30,15 @@ function BoardScreen({route, navigation, boards, toggleTodo}) {
       <ScrollView contentContainerStyle={{marginTop: 10}}>
         {arr[0].todos.map((todo) => (
           <View style={todoStyle.container}>
+            <Icon
+              name={'ban'}
+              size={27}
+              color={colors.strongCyan}
+              style={{marginHorizontal: 10}}
+              onPress={() => {
+                deleteTodo(boardId, todo.id);
+              }}
+            />
             <CheckBox
               checkedIcon="check"
               uncheckedIcon="square-o"
@@ -53,10 +63,10 @@ function BoardScreen({route, navigation, boards, toggleTodo}) {
           <Text style={text.textFooter}>Список дел</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <AntDesign name={'appstore-o'} size={27} color={'#fff'} />
+          <AntDesign name={'appstore-o'} size={27} color={colors.silver} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <Icon name={'user-circle'} size={27} color={'#fff'} />
+          <Icon name={'user-circle'} size={27} color={colors.silver} />
         </TouchableOpacity>
       </View>
     </View>
@@ -65,6 +75,7 @@ function BoardScreen({route, navigation, boards, toggleTodo}) {
 
 const mapDispatchToProps = (dispatch) => ({
   toggleTodo: (boardId, todoId) => dispatch(toggleTodo(boardId, todoId)),
+  deleteTodo: (boardId, todoId) => dispatch(deleteTodo(boardId, todoId)),
 });
 
 const mapStateToProps = ({boards}) => ({

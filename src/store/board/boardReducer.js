@@ -67,14 +67,14 @@ export const boardReducer = (state = initialState, action) => {
     //     ...state,
     //     boards: toggledBoard,
     //   };
-    // case DELETE_BOARD:
-    //   const deleteBoard = state.boards.filter((board, id) => {
-    //     return board.id !== action.id;
-    //   });
-    //   return {
-    //     ...state,
-    //     boards: deleteBoard,
-    //   };
+    case DELETE_BOARD:
+      const deleteBoard = state.boardItem.filter((boardItem, id) => {
+        return boardItem.id !== action.id;
+      });
+      return {
+        ...state,
+        boardItem: deleteBoard,
+      };
     case ADD_TODO:
       const newTodo = state.boardItem.map((boardItem) => {
         if (boardItem.id === action.id) {
@@ -106,19 +106,20 @@ export const boardReducer = (state = initialState, action) => {
         ...state,
         boardItem: toggledTodo,
       };
-    // case DELETE_TODO:
-    //   const deleteTodo = state.boards.map((boards) => {
-    //     if (boards.id === action.boardId) {
-    //       boards.todos = boards.todos.filter((todos, id) => {
-    //         return todos.id !== action.todoId;
-    //       });
-    //     }
-    //     return boards;
-    //   });
-    //   return {
-    //     ...state,
-    //     boards: deleteTodo,
-    //   };
+    case DELETE_TODO:
+      const deleteTodo = state.boardItem.map((boardItem, i) => {
+        console.log(action.boardId);
+        if (boardItem.id === action.boardId) {
+          boardItem.todos = boardItem.todos.filter((todo, id) => {
+            return todo.id !== action.todoId;
+          });
+        }
+        return boardItem;
+      });
+      return {
+        ...state,
+        boardItem: deleteTodo,
+      };
     default:
       return state;
   }

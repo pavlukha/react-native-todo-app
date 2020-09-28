@@ -1,7 +1,8 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
-const width = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+export const width = Dimensions.get('window').width;
+
+export const heightScreen = Dimensions.get('window').height;
 
 export const mainContainer = {
   flex: 1,
@@ -14,6 +15,7 @@ export const mainContainer = {
 export const colors = {
   strongCyan: '#00CC9B',
   veryDarkGrey: '#242424',
+  silver: '#C4C4C4',
 };
 
 /* Текст в заголовках страниц + текст в boards и todo */
@@ -52,6 +54,12 @@ export const text = {
     fontWeight: 'normal',
     marginLeft: 18,
   },
+  textPolicy: {
+    color: '#fff',
+    fontSize: 11,
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+  },
 };
 
 /* Блок ввода логин/пароль */
@@ -71,6 +79,7 @@ export const textInput = {
     borderRadius: 16,
     width: 343,
     height: 48,
+    paddingLeft: 10
   },
 };
 
@@ -119,7 +128,7 @@ export const modalOpenBtn = {
 /* Мадальное окно ввода названия доски или туду */
 export const centeredView = {
   flex: 0,
-  alignSelf: 'flex-end',
+  alignSelf: 'center',
   marginTop: 5,
 };
 
@@ -173,7 +182,7 @@ export const modalTextInput = {
 /* Контейнер с досками */
 export const board = {
   container: {
-    marginTop: 32,
+    marginTop: 28,
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -187,7 +196,7 @@ export const board = {
     borderRadius: 16,
     height: 140,
     width: 160,
-    margin: 7,
+    margin: 8,
   },
 };
 
@@ -222,6 +231,7 @@ export const footer = {
   borderRadius: 24,
   width: 343,
   height: 80,
+  padding: 16
 };
 
 export const innerFooter = {

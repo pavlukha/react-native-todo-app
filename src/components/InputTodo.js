@@ -25,7 +25,6 @@ class InputTodos extends React.Component {
   }
 
   submitTodo = () => {
-    console.log('id: ', this.props.boardId);
     if (this.state.input !== '') {
       this.props.addTodo(this.state.input, this.props.boardId);
       this.setState({
@@ -52,8 +51,9 @@ class InputTodos extends React.Component {
             <View style={modalView}>
               <TextInput
                 autoFocus
+                autoCapitalize="sentences"
                 style={modalTextInput}
-                placeholder="Введите название задания"
+                placeholder="Введите задачу"
                 onChangeText={(e) => {
                   this.setState({input: e});
                 }}
