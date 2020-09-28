@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
 export const width = Dimensions.get('window').width;
 
@@ -79,6 +79,7 @@ export const textInput = {
     borderRadius: 16,
     width: 343,
     height: 48,
+    paddingLeft: 10
   },
 };
 
@@ -230,6 +231,7 @@ export const footer = {
   borderRadius: 24,
   width: 343,
   height: 80,
+  padding: 16
 };
 
 export const innerFooter = {
