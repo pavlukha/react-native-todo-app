@@ -2,19 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Alert, View, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import {addTodo} from '../../store/board/actions';
+import {addBoard} from '../../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
+  modalBtns,
   modalOpenBtn,
   centeredView,
-  buttonBlock,
   modalView,
+  buttonBlock,
   modalTextInput,
-  modalBtns,
 } from '../../styles/styles';
 
-class InputTodos extends React.Component {
+class InputBoards extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -24,9 +24,9 @@ class InputTodos extends React.Component {
     };
   }
 
-  submitTodo = () => {
+  submitBoard = () => {
     if (this.state.input !== '') {
-      this.props.addTodo(this.state.input, this.props.boardId);
+      this.props.addBoard(this.state.input);
       this.setState({
         input: '',
       });
@@ -53,7 +53,7 @@ class InputTodos extends React.Component {
                 autoFocus
                 autoCapitalize="sentences"
                 style={modalTextInput}
-                placeholder="Введите название задания"
+                placeholder="Название доски"
                 onChangeText={(e) => {
                   this.setState({input: e});
                 }}
@@ -63,7 +63,7 @@ class InputTodos extends React.Component {
                 <TouchableOpacity
                   style={modalBtns}
                   onPress={() => {
-                    this.submitTodo();
+                    this.submitBoard();
                     this.setState({modalVisible: !this.state.modalVisible});
                   }}>
                   <Icon name={'check'} color="#fff" size={20} />
@@ -90,12 +90,8 @@ class InputTodos extends React.Component {
   }
 }
 
-const mapStateToProps = ({boards}) => ({
-  boards: boards.boardItem,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  addTodo: (title, id) => dispatch(addTodo(title, id)),
+  addBoard: (title) => dispatch(addBoard(title)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputTodos);
+export default connect(null, mapDispatchToProps)(InputBoards);

@@ -5,7 +5,7 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {connect} from 'react-redux';
-import InputTodo from '../components/Input/InputTodo';
+import InputTodo from '../components/InputTodo';
 import {
   colors,
   mainContainer,

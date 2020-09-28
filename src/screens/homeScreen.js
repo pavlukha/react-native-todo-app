@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, ScrollView, Text} from 'react-native';
-import InputBoards from '../components/Input/InputBoard';
-import Boards from '../components/Boards';
+import InputBoards from '../components/Boards/InputBoard';
+import Boards from '../components/Boards/Boards';
 import {
   mainContainer,
   board,
@@ -13,11 +13,11 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import DeleteBoard from '../components/DeleteBoard';
+import DeleteBoard from '../components/Boards/DeleteBoard';
 
 function HomeScreen({navigation}) {
-  const [isOpen, setIsOpen] = useState('false');
-  const [isClose, setIsClose] = useState('false');
+  const [isOpen, setIsOpen] = useState(false);
+  const [id, prepareToDelete] = useState(null);
 
   return (
     <View style={mainContainer}>
@@ -25,13 +25,20 @@ function HomeScreen({navigation}) {
         <Text style={[text.textTitle, {marginRight: '65%'}]}>Доски</Text>
         <InputBoards />
       </View>
-      <DeleteBoard />
-      {/* boardId={} isOpen={} isClose={} */}
+      <DeleteBoard
+        boardId={id}
+        isOpen={isOpen}
+        close={() => {
+          setIsOpen(false);
+          prepareToDelete(null);
+        }}
+      />
       <ScrollView contentContainerStyle={board.container}>
         <Boards
           navigation={navigation}
           openDeleteModal={(id) => {
-            boardId, isOpen;
+            setIsOpen(true);
+            prepareToDelete(id);
           }}
         />
       </ScrollView>

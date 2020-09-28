@@ -127,7 +127,7 @@ export const modalOpenBtn = {
 /* Мадальное окно ввода названия доски или туду */
 export const centeredView = {
   flex: 0,
-  alignSelf: 'flex-end',
+  alignSelf: 'center',
   marginTop: 5,
 };
 

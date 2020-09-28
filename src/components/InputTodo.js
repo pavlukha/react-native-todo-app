@@ -2,19 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Alert, View, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import {addBoard} from '../../store/board/actions';
+import {addTodo} from '../store/board/actions';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
-  modalBtns,
   modalOpenBtn,
   centeredView,
-  modalView,
   buttonBlock,
+  modalView,
   modalTextInput,
-} from '../../styles/styles';
+  modalBtns,
+} from '../styles/styles';
 
-class InputBoards extends React.Component {
+class InputTodos extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -24,9 +24,9 @@ class InputBoards extends React.Component {
     };
   }
 
-  submitBoard = () => {
+  submitTodo = () => {
     if (this.state.input !== '') {
-      this.props.addBoard(this.state.input);
+      this.props.addTodo(this.state.input, this.props.boardId);
       this.setState({
         input: '',
       });
@@ -53,7 +53,7 @@ class InputBoards extends React.Component {
                 autoFocus
                 autoCapitalize="sentences"
                 style={modalTextInput}
-                placeholder="Введите название доски"
+                placeholder="Введите задачу"
                 onChangeText={(e) => {
                   this.setState({input: e});
                 }}
@@ -63,7 +63,7 @@ class InputBoards extends React.Component {
                 <TouchableOpacity
                   style={modalBtns}
                   onPress={() => {
-                    this.submitBoard();
+                    this.submitTodo();
                     this.setState({modalVisible: !this.state.modalVisible});
                   }}>
                   <Icon name={'check'} color="#fff" size={20} />
@@ -90,8 +90,12 @@ class InputBoards extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addBoard: (title) => dispatch(addBoard(title)),
+const mapStateToProps = ({boards}) => ({
+  boards: boards.boardItem,
 });
 
-export default connect(null, mapDispatchToProps)(InputBoards);
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (title, id) => dispatch(addTodo(title, id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputTodos);

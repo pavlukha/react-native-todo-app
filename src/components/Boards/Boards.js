@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {addBoard, deleteBoard} from '../store/board/actions';
-import {colors, board, text} from '../styles/styles';
+import {addBoard, deleteBoard} from '../../store/board/actions';
+import {colors, board, text} from '../../styles/styles';
 
 class Boards extends React.Component {
   render() {
@@ -17,7 +17,9 @@ class Boards extends React.Component {
               boardTitle: boardItem.title,
             });
           }}
-          onLongPress={() => this.props.deleteBoard(boardItem.id)}
+          onLongPress={() => {
+            this.props.openDeleteModal(boardItem.id);
+          }}
           style={board.item}>
           <Text style={text.textBoardTitle}>{boardItem.title}</Text>
           <Icon
