@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {TouchableOpacity, Text} from 'react-native';
+import { connect } from 'react-redux';
+import { TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {addBoard, deleteBoard} from '../../store/board/actions';
-import {colors, board, text} from '../../styles/styles';
+import { addBoard, deleteBoard } from '../../store/board/actions';
+import { colors, board, text } from '../../styles/styles';
 
 class Boards extends React.Component {
   render() {
@@ -26,7 +26,7 @@ class Boards extends React.Component {
             name={boardItem.icon}
             size={27}
             color={colors.strongCyan}
-            style={{alignSelf: 'flex-start', marginTop: 16}}
+            style={{ alignSelf: 'flex-start', marginTop: 16 }}
           />
         </TouchableOpacity>
       );

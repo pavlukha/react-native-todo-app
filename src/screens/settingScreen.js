@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import {
   mainContainer,
   text,
@@ -9,12 +9,12 @@ import {
 } from '../styles/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function SettingScreen({navigation}) {
+function SettingScreen({ navigation }) {
   return (
     <View style={mainContainer}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <Text style={text.textTitle}>Настройки</Text>
       </View>
 
@@ -22,7 +22,7 @@ function SettingScreen({navigation}) {
         name={'tools'}
         size={75}
         color={colors.silver}
-        style={{marginHorizontal: 20}}
+        style={{ marginHorizontal: 20 }}
       />
 
       <View style={footer}>
@@ -31,7 +31,7 @@ function SettingScreen({navigation}) {
             name={'cog'}
             size={27}
             color={colors.strongCyan}
-            style={{marginHorizontal: 20}}
+            style={{ marginHorizontal: 20 }}
           />
           <Text style={text.textFooter}>Настройки</Text>
         </View>
