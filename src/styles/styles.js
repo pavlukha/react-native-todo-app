@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
 export const width = Dimensions.get('window').width;
 
@@ -79,7 +79,7 @@ export const textInput = {
     borderRadius: 16,
     width: 343,
     height: 48,
-    paddingLeft: 10
+    paddingLeft: 10,
   },
 };
 
@@ -195,7 +195,7 @@ export const board = {
     backgroundColor: colors.veryDarkGrey,
     borderRadius: 16,
     height: 140,
-    width: 160,
+    width: 140,
     margin: 8,
   },
 };
@@ -231,7 +231,7 @@ export const footer = {
   borderRadius: 24,
   width: 343,
   height: 80,
-  padding: 16
+  padding: 16,
 };
 
 export const innerFooter = {
@@ -260,8 +260,39 @@ export const imageItem = {
   resizeMode: 'center',
 };
 
-export const itemViewImage = {
+export const panel = {
+  padding: 20,
+  backgroundColor: '#c0dfc2',
+  paddingTop: 20,
+  borderRadius: 20,
+  // shadowColor: '#000000',
+  // shadowOffset: {width: 0, height: 0},
+  // shadowRadius: 5,
+  // shadowOpacity: 0.4,
+};
+
+export const panelButton = {
+  padding: 13,
+  borderRadius: 10,
+  backgroundColor: "#64ac8f",
   alignItems: 'center',
-  borderRadius: 8,
-  marginTop: 10,
+  marginVertical: 7,
+};
+
+export const panelTitle = {
+  fontSize: 27,
+  height: 35,
+};
+
+export const panelSubtitle = {
+  fontSize: 14,
+  color: 'gray',
+  height: 30,
+  marginBottom: 10,
+};
+
+export const panelButtonTitle = {
+  fontSize: 17,
+  fontWeight: 'bold',
+  color: 'white',
 };

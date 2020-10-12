@@ -1,6 +1,5 @@
 import {
   ADD_BOARD,
-  TOGGLE_BOARD,
   DELETE_BOARD,
   ADD_TODO,
   TOGGLE_TODO,
@@ -50,23 +49,6 @@ export const boardReducer = (state = initialState, action) => {
         ...state,
         boardItem: newBoard,
       };
-    // case TOGGLE_BOARD:
-    //   const toggledBoard = state.boards.map((board, i) => {
-    //     if (board.id === action.boardId) {
-    //       board.todos.map((todo) => {
-    //         if (board.id === action.boardId) {
-    //           board.isDone = !board.isDone;
-    //           board.todos.map((todo) => (todo.isDone = !todo.isDone));
-    //         }
-    //         return board;
-    //       });
-    //     }
-    //     return board;
-    //   });
-    //   return {
-    //     ...state,
-    //     boards: toggledBoard,
-    //   };
     case DELETE_BOARD:
       const deleteBoard = state.boardItem.filter((boardItem, id) => {
         return boardItem.id !== action.id;
@@ -108,7 +90,6 @@ export const boardReducer = (state = initialState, action) => {
       };
     case DELETE_TODO:
       const deleteTodo = state.boardItem.map((boardItem, i) => {
-        console.log(action.boardId);
         if (boardItem.id === action.boardId) {
           boardItem.todos = boardItem.todos.filter((todo, id) => {
             return todo.id !== action.todoId;

@@ -1,36 +1,63 @@
-import React from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, SafeAreaView, ImageBackground} from 'react-native';
 import {
   mainContainer,
   text,
   innerFooter,
   footer,
   colors,
-  profileImage,
   todoStyle,
 } from '../styles/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import CameraImage from '../components/Camera/Camera';
+import CameraPicker from '../components/Camera/CameraPicker';
 
-function ProfileScreen({ navigation }) {
+function ProfileScreen({navigation}) {
+
+const [isCameraPickerOpen, toggleCameraPicker] = useState(false);
+
+if (isCameraPickerOpen) {
+  return <CameraPicker
+            close={() => toggleCameraPicker(false)}
+            navigation={navigation}
+          />
+}
+
   return (
     <SafeAreaView style={mainContainer}>
       <View style={mainContainer}>
-        <View style={profileImage}>
-          <CameraImage />
-        </View>
-
+        <View>
+        <ImageBackground
+          source={require('../../assets/onboarding1.png')}
+          style={{height: 300, width: 300}}
+          imageStyle={{borderRadius: 15}}
+         />
         <TouchableOpacity
-          style={[todoStyle.container, { justifyContent: 'space-between' }]}
+          style={[todoStyle.container, {justifyContent: 'space-between'}]}
+          onPress={() => {toggleCameraPicker(true)}}
+          >
+          <Text style={[text.textTodoTitle, {marginLeft: 20}]}>
+            Сменить фото профиля
+          </Text>
+          <Icon
+            name={'camera-retro'}
+            color={colors.strongCyan}
+            size={27}
+            style={{marginHorizontal: 20}}
+          />
+        </TouchableOpacity>
+        </View>
+        
+        <TouchableOpacity
+          style={[todoStyle.container, {justifyContent: 'space-between'}]}
           onPress={() => navigation.navigate('Settings')}>
-          <Text style={[text.textTodoTitle, { marginLeft: 20 }]}>Настройки</Text>
+          <Text style={[text.textTodoTitle, {marginLeft: 20}]}>Настройки</Text>
           <Icon
             name={'cog'}
             size={27}
             color={colors.strongCyan}
-            style={{ marginHorizontal: 20 }}
+            style={{marginHorizontal: 20}}
           />
         </TouchableOpacity>
 
@@ -40,7 +67,7 @@ function ProfileScreen({ navigation }) {
               name={'user-circle'}
               size={27}
               color={colors.strongCyan}
-              style={{ marginHorizontal: 20 }}
+              style={{marginHorizontal: 20}}
             />
             <Text style={text.textFooter}>Профиль</Text>
           </View>

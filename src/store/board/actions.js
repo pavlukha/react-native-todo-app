@@ -1,7 +1,6 @@
 import {
   ADD_BOARD,
   DELETE_BOARD,
-  TOGGLE_BOARD,
   ADD_TODO,
   DELETE_TODO,
   TOGGLE_TODO,
@@ -10,12 +9,6 @@ import {
 export const addBoard = (title) => ({
   type: ADD_BOARD,
   title,
-});
-
-export const toggleBoard = (boardId, todoId) => ({
-  type: TOGGLE_BOARD,
-  boardId,
-  todoId,
 });
 
 export const deleteBoard = (id) => ({
